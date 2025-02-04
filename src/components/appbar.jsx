@@ -6,7 +6,7 @@ export default function Appbar(){
         <div className="flex flex-col justify-center items-center"><Button title="HOME" path="/"/></div>
         <div className="flex flex-col justify-center items-center"><Button title="RGB DATA" path="/rgbsensor"/></div>
         <div className="flex flex-col justify-center items-center"><Button title="GAS SENSOR DATA" path="/gassensor"/></div>
-        <div className="flex flex-col justify-center items-center"><Button title="SPECTRAL DATA" path="spectralsensor"/></div>
+        <div className="flex flex-col justify-center items-center"><Button title="SPECTRAL DATA" path="/spectralsensor"/></div>
     </div>
     
     </>

@@ -1,9 +1,8 @@
 import Appbar from "../components/appbar";
 import Button from "../components/button";
-import Calendar from "../components/calendar";
 import Card from "../components/card";
-
-export default function Gassensor(){
+import Calendar from "../components/calendar";
+export default function Rgbsensor(){
     return <div className="h-screen w-full bg-[#243642] absolute">
         <Appbar/>
         {/* rgb sensor */}
@@ -20,28 +19,31 @@ export default function Gassensor(){
         <div className="w-full h-10 grid grid-cols-12 bg-[#243642] mt-2 justify-between  p-3 pl-8">
             <div className="text-[#E2F1E7] bg-[#cad2c5] col-span-3 rounded-xl flex justify-around py-1">
                 <Button title="Overview" ></Button>
-                <Button title="Visualise" ></Button>
+                <Button title="Visualise" path="/visualise" ></Button>
             </div>
             
         </div>
         <div className="w-full h-44 flex bg-[#243642] mt-2 justify-around  p-3 pl-8">
             <div className="text-[#242926] bg-[#cad2c5] col-span-3 rounded-xl py-1 w-full mr-12 text-4xl flex flex-col justify-center items-center">
-                Channel 1
+                R Value
             </div>
             <div className="text-[#242926] bg-[#cad2c5] col-span-3 rounded-xl  text-4xl flex flex-col justify-center items-center py-1 w-full mx-12">
-                Channel 2
+                G Value
             </div>
             <div className="text-[#242926] bg-[#cad2c5] col-span-3 rounded-xl  text-4xl flex flex-col justify-center items-center py-1 w-full mx-12">
-                Channel 3
+                B value
+            </div>
+            <div className="text-[#242926] bg-[#cad2c5] col-span-3 rounded-xl  text-4xl flex flex-col justify-center items-center py-1 w-full mx-12">
+                Session ID
             </div>
             
         </div>
         <div className="w-full h-[60%] bg-[#243642] mt-2 p-3 pl-8 grid grid-cols-12 gap-4">
             <div className="text-[#242926] bg-[#cad2c5] col-span-7 rounded-xl py-1 w-full mr-12 text-4xl flex flex-col justify-center items-center">
-                pie chart
+                Pie Chart
             </div>
             <div className="text-[#242926] bg-[#cad2c5]  rounded-xl col-span-5  text-4xl flex flex-col justify-center items-center py-1 w-full ">
-                data
+                Data
             </div>
             
         </div>

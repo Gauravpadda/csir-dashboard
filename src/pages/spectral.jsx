@@ -1,9 +1,8 @@
 import Appbar from "../components/appbar";
 import Button from "../components/button";
-import Calendar from "../components/calendar";
 import Card from "../components/card";
-
-export default function Gassensor(){
+import Calendar from "../components/calendar";
+export default function SpectralSensor(){
     return <div className="h-screen w-full bg-[#243642] absolute">
         <Appbar/>
         {/* rgb sensor */}
@@ -24,27 +23,22 @@ export default function Gassensor(){
             </div>
             
         </div>
-        <div className="w-full h-44 flex bg-[#243642] mt-2 justify-around  p-3 pl-8">
-            <div className="text-[#242926] bg-[#cad2c5] col-span-3 rounded-xl py-1 w-full mr-12 text-4xl flex flex-col justify-center items-center">
-                Channel 1
-            </div>
-            <div className="text-[#242926] bg-[#cad2c5] col-span-3 rounded-xl  text-4xl flex flex-col justify-center items-center py-1 w-full mx-12">
-                Channel 2
-            </div>
-            <div className="text-[#242926] bg-[#cad2c5] col-span-3 rounded-xl  text-4xl flex flex-col justify-center items-center py-1 w-full mx-12">
-                Channel 3
-            </div>
-            
-        </div>
-        <div className="w-full h-[60%] bg-[#243642] mt-2 p-3 pl-8 grid grid-cols-12 gap-4">
+        
+        <div className="w-full h-full bg-[#243642] mt-2 p-3 pl-8 grid grid-cols-12 gap-4">
             <div className="text-[#242926] bg-[#cad2c5] col-span-7 rounded-xl py-1 w-full mr-12 text-4xl flex flex-col justify-center items-center">
                 pie chart
             </div>
-            <div className="text-[#242926] bg-[#cad2c5]  rounded-xl col-span-5  text-4xl flex flex-col justify-center items-center py-1 w-full ">
-                data
+            <div className="text-[#242926] bg-[#243642]  rounded-xl col-span-5  text-4xl py-1 w-full ">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="h-48 w-full bg-[#cad2c5] rounded-2xl ">Flower Specification</div>
+                    <div className="h-48 w-full bg-[#cad2c5] rounded-2xl ">flower Image</div>
+                </div>
+                <div className="h-[73.5%] w-full bg-[#cad2c5] rounded-3xl mt-2">
+                    Data
+                </div>
             </div>
             
         </div>
         
     </div>
-}
+}   
