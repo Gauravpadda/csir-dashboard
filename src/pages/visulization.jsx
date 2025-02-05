@@ -1,14 +1,16 @@
 import Appbar from "../components/appbar";
 import Button from "../components/button";
 import Card from "../components/card";
-
+import Calendar from "../components/calendar";
 export default function Visualise(){
     return <div className="h-screen w-full bg-[#243642] absolute">
         <Appbar/>
         {/* rgb sensor */}
         <div className="w-full h-10 grid grid-cols-12 bg-[#243642] mt-[60px] justify-between">
             <div className="text-[#E2F1E7] text-4xl col-span-4 px-4 pl-8 pt-2">Gas Sensor Data</div>
-            <div className="text-[#E2F1E7] text-4xl col-span-6 px-4 pt-2 col-start-9 col-end-12">calender</div>
+            <div className="text-[#E2F1E7] text-xl col-span-2 px-4 col-start-10 py-4">
+                <Calendar/>
+            </div>
             
         </div>
         {/* rgb sensor */}
