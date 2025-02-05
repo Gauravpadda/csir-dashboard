@@ -9,10 +9,10 @@ export default function Gassensor(){
         {/* rgb sensor */}
         <div className="w-full h-10 grid grid-cols-12 bg-[#243642] mt-[60px] justify-between">
             <div className="text-[#E2F1E7] text-4xl col-span-4 px-4 pl-8 pt-2">Gas Sensor Data</div>
-            <div className="text-[#E2F1E7] text-xl col-span-2 px-4 col-start-10 py-4">
+            <div className="text-[#E2F1E7] text-xl col-span-2 px-4 col-start-9 py-4">
                 <Calendar/>
             </div>
-            <div className="text-[#E2F1E7] col-span-1 px-4 mt-2 mr-11">
+            <div className="text-[#E2F1E7] col-span-1 col-start-12 px-4 mt-2 mr-11">
                 <Button title="Download" ></Button>
             </div>
         </div>

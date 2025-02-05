@@ -14,14 +14,16 @@ export default function Calendar() {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const daysArray = [];
 
+    // Add empty placeholders for days before the first day of the month
     for (let i = 0; i < firstDayOfMonth; i++) {
       daysArray.push(<div key={`empty-${i}`} className="h-10 w-10"></div>);
     }
 
+    // Add days of the month
     for (let i = 1; i <= daysInMonth; i++) {
       const day = new Date(year, month, i).toLocaleDateString("en-US");
       let className =
-        "flex h-10 w-10 items-center justify-center rounded-full cursor-pointer text-black transition-all duration-200 hover:bg-gray-300";
+        "flex h-10 w-10 items-center justify-center rounded-full cursor-pointer text-black transition-all duration-200 hover:bg-gray-200";
 
       if (selectedStartDate === day) className += " bg-blue-500 text-white";
       if (selectedEndDate === day) className += " bg-red-500 text-white";
@@ -35,7 +37,13 @@ export default function Calendar() {
       }
 
       daysArray.push(
-        <div key={i} className={className} onClick={() => handleDayClick(day)}>
+        <div
+          key={i}
+          className={className}
+          onClick={() => handleDayClick(day)}
+          role="button"
+          aria-label={`Select date ${day}`}
+        >
           {i}
         </div>
       );
@@ -77,23 +85,27 @@ export default function Calendar() {
   }, []);
 
   return (
-    <div className=" w-full bg-[#f0f4ef] rounded-lg border shadow-md transition-all duration-300" ref={datepickerRef}>
+    <div
+      className=" w-96 bg-[#f0f4ef] rounded-lg border shadow-md transition-all duration-300 min-h-10"
+      ref={datepickerRef}
+    >
       {/* Input Field */}
-      <div>
+      <div className="p-1 h-8">
         <input
           type="text"
-          placeholder="Pick a date"
-          className="w-full p-3 border rounded-lg cursor-pointer text-black bg-white shadow-sm"
+          placeholder="Select particular timeline"
+          className="w-full p-3 h-8 border rounded-lg cursor-pointer text-black bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={updateInput()}
           onClick={toggleDatepicker}
           readOnly
+          aria-label="Date picker input"
         />
       </div>
 
       {/* Calendar Popup */}
       {isOpen && (
-        <div className="absolute z-10 mt-2 w-96 bg-white shadow-lg rounded-lg border p-4 text-black transition-opacity duration-300 animate-fade-in">
-          <div className="flex justify-between items-center mb-2">
+        <div className="absolute z-10 mt-2 w-full max-w-[400px] bg-white shadow-lg rounded-lg border p-4 text-black transition-opacity duration-300 animate-fade-in">
+          <div className="flex justify-between items-center mb-4">
             <p className="text-lg font-medium">
               {currentDate.toLocaleString("default", { month: "long" })}{" "}
               {currentDate.getFullYear()}
@@ -106,6 +118,7 @@ export default function Calendar() {
                   )
                 }
                 className="px-2 py-1 border rounded text-black hover:bg-gray-200 transition-all"
+                aria-label="Previous month"
               >
                 {"<"}
               </button>
@@ -116,6 +129,7 @@ export default function Calendar() {
                   )
                 }
                 className="px-2 py-1 border rounded text-black hover:bg-gray-200 transition-all"
+                aria-label="Next month"
               >
                 {">"}
               </button>
@@ -125,7 +139,9 @@ export default function Calendar() {
           {/* Days of the Week */}
           <div className="grid grid-cols-7 text-center text-gray-700 mb-2">
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-              <div key={day} className="font-semibold">{day}</div>
+              <div key={day} className="font-semibold">
+                {day}
+              </div>
             ))}
           </div>
 
