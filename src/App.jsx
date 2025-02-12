@@ -5,6 +5,7 @@ import Rgbsensor from "./pages/rgbSensor"
 import SpectralSensor from "./pages/spectral"
 import Visualise from "./pages/visulization"
 import Calendar from "./components/calendar"
+import Aboutus from "./pages/aboutus"
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
         <Route path="/rgbsensor" element={<Rgbsensor/>}></Route>
         <Route path="/spectralsensor" element={<SpectralSensor/>}></Route>
         <Route path="/visualise" element={<Visualise/>}></Route>
-        <Route path="/calendar" element={<Calendar/>}></Route>
+        
+        <Route path="/aboutUs" element={<Aboutus/>}></Route>
       </Routes>
     </BrowserRouter>
     

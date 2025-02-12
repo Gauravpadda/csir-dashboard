@@ -1,32 +1,22 @@
-import { animate, motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
-
+import { useRef ,useEffect} from "react";
+import { useInView,useAnimation,motion } from "framer-motion";
 export function ScrollEffect({ children }) {
-  const divRef = useRef();
-  const inView = useInView(divRef, {margin: "-100px 0px 0px 0px",once:true });
-  const manageScroll = useAnimation();
+  const ref = useRef();
+  const inView = useInView(ref, { margin: "-100px 0px 0px 0px", once: true });
+  const controls = useAnimation();
 
   useEffect(() => {
-    if (inView) {
-      manageScroll.start("after");
-    }
-    else{
-        manageScroll.start("start")
-    }
-  }, [inView, manageScroll]);
+    if (inView) controls.start("visible");
+    else controls.start("hidden");
+  }, [inView, controls]);
 
   return (
     <motion.div
-      variants={{
-        start: { opacity: 0, y: 100 },
-        after: { opacity: 1, y: 0 ,repeatCount:Infinity},
-      }}
-      initial="start"
-      animate={manageScroll}
-     
-      
-      transition={{ delay: 0.1, duration: 1 }}
-      ref={divRef}
+      ref={ref}
+      variants={{ hidden: { opacity: 0, y: 100 }, visible: { opacity: 1, y: 0 } }}
+      initial="hidden"
+      animate={controls}
+      transition={{ delay: 0.2, duration: 0.8 }}
     >
       {children}
     </motion.div>

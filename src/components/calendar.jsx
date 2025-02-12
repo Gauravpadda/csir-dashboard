@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { FiCalendar } from "react-icons/fi"; // Using Heroicons for the calendar icon
 
 export default function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -14,12 +15,10 @@ export default function Calendar() {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const daysArray = [];
 
-    // Add empty placeholders for days before the first day of the month
     for (let i = 0; i < firstDayOfMonth; i++) {
       daysArray.push(<div key={`empty-${i}`} className="h-10 w-10"></div>);
     }
 
-    // Add days of the month
     for (let i = 1; i <= daysInMonth; i++) {
       const day = new Date(year, month, i).toLocaleDateString("en-US");
       let className =
@@ -86,25 +85,30 @@ export default function Calendar() {
 
   return (
     <div
-      className=" w-96 bg-[#f0f4ef] rounded-lg border shadow-md transition-all duration-300 min-h-10"
+      className="relative w-96 bg-[#c3bef7] rounded-lg border shadow-md transition-all duration-300 h-full"
       ref={datepickerRef}
     >
-      {/* Input Field */}
-      <div className="p-1 h-8">
+      {/* Input Field with Icon */}
+      <div className="relative p-1 h-fit">
         <input
           type="text"
-          placeholder="Select particular timeline"
-          className="w-full p-3 h-8 border rounded-lg cursor-pointer text-black bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Select date range"
+          className="w-full p-3 h-10 border rounded-lg cursor-pointer text-black bg-[#eeeeff] shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pl-10"
           value={updateInput()}
           onClick={toggleDatepicker}
           readOnly
           aria-label="Date picker input"
         />
+        {/* Calendar Icon */}
+        <FiCalendar
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500 cursor-pointer"
+          onClick={toggleDatepicker}
+        />
       </div>
 
       {/* Calendar Popup */}
       {isOpen && (
-        <div className="absolute z-10 mt-2 w-full max-w-[400px] bg-white shadow-lg rounded-lg border p-4 text-black transition-opacity duration-300 animate-fade-in">
+        <div className="absolute z-10 mt-2 w-full max-w-[400px] bg-[#c3bef7] shadow-lg rounded-lg border p-4 text-black transition-opacity duration-300 animate-fade-in">
           <div className="flex justify-between items-center mb-4">
             <p className="text-lg font-medium">
               {currentDate.toLocaleString("default", { month: "long" })}{" "}
